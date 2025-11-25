@@ -1,2 +1,1 @@
-Спринт 2, "Доступность"
-"Посмотри в окно"
+https://github.com/petrovsn/posmotri-v-okno-fd
