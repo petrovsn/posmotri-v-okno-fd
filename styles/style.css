@@ -9,12 +9,13 @@ html {
 }
 
 .page {
+  display: flex;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: '"Fira Sans" Condensed', sans-serif;
-  font-size: 16px;
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-size: 18px;
   background-color: #1b1919;
 }
 
@@ -62,9 +63,20 @@ ol {
 }
 
 /*===========================================================================*/
-.page {
-  display: flex;
-}
+
+/*схема разметки
+page
+content
+result             content__details
+videocontainer     h1
+  video            content__list-container
+search-form          content__list
+                    content__list-item
+                          content__card-link content__card-link_current
+                     button 
+
+*/
+
 
 .content {
   display: flex;
@@ -72,90 +84,74 @@ ol {
   flex-direction: row;
   align-items: end;
   width: 1140px;
-  height: 534px;
-  gap: 32px;
+  gap: 30px;
   opacity: 1;
 }
 
 .result {
-  width: 711px;
-  height: 456px;
-  gap: 16px;
+  display: flex;
   opacity: 1;
-
 }
 
 .content__details {
   display: flex;
   flex-direction: column;
   width: 399px;
-  height: 534px;
-  gap: 26px;
   opacity: 1;
+  gap: 21px;
 }
 
-.search-form {
+.result{
   display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  width: 711px;
+  gap: 16px;
 }
-
-.search-form__fieldset-title {
-  font-family: '"Fira Sans" Condensed', sans-serif;
-  font-weight: 400;
-  font-style: "Regular";
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0%;
-  margin-bottom: 5px;
-}
-
 
 .result__video-container {
   width: 711px;
   height: 386px;
-  margin-bottom: 16px;
   opacity: 1;
   position: relative;
+  margin-top: 200px;
 }
 
 .result__video-container>video {
-  width: 711px;
-  height: 386px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
 }
 
 
 
-.content__list-container {
-  display: flex;
-  flex-direction: column;
-  height: 298px;
-  overflow-y: scroll;
-  gap: 30px;
-}
-
 .title {
-  font-family: "Oswald";
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
-  font-style: Bold;
   font-size: 75px;
   line-height: 94%;
-  letter-spacing: 0%;
   text-transform: uppercase;
-
 }
 
 .title>.content__accent {
   color: #545050;
 }
 
-.content__list {
+.content__list-container {
   display: flex;
   flex-direction: column;
+  height: 298px;
+  overflow-y: auto;
   gap: 30px;
+  position: relative
+}
+
+/*блок с карточками*/
+.content__list {    
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .content__video-card {
@@ -168,6 +164,8 @@ ol {
 .content__card-link {
   text-decoration: none;
   color: white;
+  display: block;
+  background-color: transparent;
 }
 
 .content__video-card-description-container {
@@ -175,43 +173,72 @@ ol {
 }
 
 .content__video-card-title {
-  font-family: Oswald;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
-  font-style: Bold;
   font-size: 30px;
   line-height: 100%;
   text-transform: uppercase;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 196px;
+  margin-bottom: 5px;
 }
 
 .content__video-card-description {
-  font-family: '"Fira Sans" Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 16.2px;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 196px;
-  line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 .content__video-card-thumbnail {
   width: 194px;
   height: 103px;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
-  margin-right: 30px;
 }
 
 /*============================================================*/
-fieldset {
-  border: none;
+/*
+search-form
+search-form__fieldset            search-form__fieldset    button
+  search-form__fieldset-title     search-form__fieldset-title
+  search-form__textfield          search-form__checkbox-list
+
+*/
+/*раздел с вводом города, чекбоксами и кнопкой*/
+.search-form {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+
 }
 
-.search-form__fieldset {
-  height: 54px;
+.search-form__fieldset{
+  display: flex;
+  flex-direction: column;
+  padding-top: 1px;
+}
+
+.search-form__fieldset-title {
+  font-family: "Fira Sans Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  margin-bottom: 5px;
+}
+
+fieldset {
+  border: none;
 }
 
 .search-form__textfield {
@@ -226,27 +253,20 @@ fieldset {
   height: 31px;
   width: 229px;
 
-  font-family: '"Fira Sans" Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 100%;
-  letter-spacing: 0%;
 }
 
 .search-form__textfield::placeholder {
   color: rgb(255 255 255 / 0.7)
 }
 
-.search-form {
-  display: flex;
-  flex-direction: row;
-}
-
 .search-form__checkbox-list {
   display: flex;
   flex-direction: row;
   width: 212px;
-  height: 22px;
   gap: 15px;
 }
 
@@ -284,6 +304,7 @@ fieldset {
   height: 19px;
   opacity: 1;
   border: 1px solid #fff;
+  padding: 1px;
   cursor: pointer
 }
 
@@ -314,13 +335,11 @@ fieldset {
   color: #fff;
   border-width: 1px;
   background-color: rgba(1, 1, 1, 0);
-  border-color: #fff;
-  font-family: '"Fira Sans" Condensed', sans-serif;
+  border: 1px solid #fff;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-weight: 700;
-  font-style: Bold;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 100%;
-  letter-spacing: 0%;
   text-align: center;
   cursor: pointer
 }
@@ -344,6 +363,7 @@ fieldset {
 .search-form__submit-button {
   align-self: flex-end;
   width: 194px;
+  
 }
 
 .more-button {
@@ -352,13 +372,7 @@ fieldset {
 
 
 /*================================STEP 6=====================================*/
-
-.content__card-link {
-  display: block;
-  background-color: none;
-}
-
-W .content__card-link:focus {
+.content__card-link:focus {
   outline: none;
 }
 
@@ -374,17 +388,12 @@ W .content__card-link:focus {
   background-color: #545050;
 }
 
+.content__card-link_current {
+  background-color: #545050;
+}
+
 
 .content__list-item {
   padding: 3px;
 }
 
-/*================================STEP 8 прелоадеры=====================================*/
-
-.result__video-container {
-  position: relative
-}
-
-.content__list-container {
-  position: relative
-}
