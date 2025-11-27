@@ -88,11 +88,6 @@ search-form          content__list
   opacity: 1;
 }
 
-.result {
-  display: flex;
-  opacity: 1;
-}
-
 .content__details {
   display: flex;
   flex-direction: column;
@@ -103,6 +98,7 @@ search-form          content__list
 
 .result{
   display: flex;
+  opacity: 1;
   flex-direction: column;
   align-items: center;
   width: 711px;
@@ -114,7 +110,6 @@ search-form          content__list
   height: 386px;
   opacity: 1;
   position: relative;
-  margin-top: 200px;
 }
 
 .result__video-container>video {
